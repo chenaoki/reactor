@@ -1,0 +1,5 @@
+XSym
+0100
+e27450bd63e25e29453284c16ed07f20
+/usr/local/Cellar/python/2.7.8_2/Frameworks/Python.framework/Versions/2.7/lib/python2.7/sre_parse.py
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           

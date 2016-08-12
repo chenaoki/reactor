@@ -1,0 +1,62 @@
+<!doctype html><head>
+<title>Grafter</title>
+    <meta charset="utf8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" href="{{ _css }}" >
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js?ver=1.4.2"></script>
+    <script src= "{{ _js_login }}"></script>
+</head>
+
+<body>
+    <div id="bar">
+        <div id="container">
+            <!-- Login Starts Here -->
+            <div id="title">
+                <big><big><big><big>Grafter</big></big></big></big></big>
+                <small>discussion platform</small>
+            </div>
+            <div id="loginContainer">
+                <a href="#" id="loginButton"><span>Login</span><em></em></a>
+                <div style="clear:both"></div>
+                <div id="loginBox">
+                    <form id="loginForm">
+                        <fieldset id="body">
+                            <fieldset>
+                                <label for="email">Email Address</label>
+                                <input type="text" name="email" id="email" />
+                            </fieldset>
+                            <fieldset>
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password" />
+                            </fieldset>
+                            <input type="submit" id="login" value="Sign in" />
+                            <label for="checkbox"><input type="checkbox" id="checkbox" />Remember me</label>
+                        </fieldset>
+                        <span><a href="#">Forgot your password?</a></span>
+                    </form>
+                </div>
+            </div>
+            <!-- Login Ends Here -->
+        </div>
+    </div>
+    <!-- Bar Ends Here -->
+
+     <div class="reactionList">
+        <h1> Context </h1><HR>
+        {{ _content_seeds }}
+    </div>
+    <div class="reactionList">
+        <h1> Pros </h1><HR>
+        {{ _content_pros }}
+    </div>
+    <div class="reactionList">
+        <h1> Cons </h1><HR>
+        {{ _content_cons }}
+    </div>
+    <div class="reactionList">
+        <h1> Info </h1><HR>
+        {{ _content_neut }}
+    </div>
+
+
+</body>
