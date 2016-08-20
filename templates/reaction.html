@@ -12,7 +12,9 @@
         <div id="container">
             <!-- Login Starts Here -->
             <div id="title">
+                <a href="/">
                 <big><big><big><big>Re:actor</big></big></big></big></big>
+                </a>
                 <small>discussion platform</small>
             </div>
             <div id="loginContainer">
@@ -42,21 +44,19 @@
     <!-- Bar Ends Here -->
 
      <div class="reactionField">
-         <h1> Context </h1><HR>
-         <div class="reactionList">
+        <h1> Context </h1><HR>
+        <div class="reactionList">
             {{ _content_context }}
         </div>
-    </div>
-    <div class="reactionField">
-        <h1> Pros </h1><HR>
+        <HR><h1> Others </h1><HR>
         <div class="reactionList">
-            {{ _content_pros }}
+            {{ _content_parents }}
         </div>
     </div>
     <div class="reactionField">
-        <h1> Cons </h1><HR>
+        <h1> Reactions </h1><HR>
         <div class="reactionList">
-            {{ _content_cons }}
+            {{ _content_react }}
         </div>
     </div>
     <div class="reactionField">

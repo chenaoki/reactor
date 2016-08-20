@@ -16,23 +16,11 @@ def hello():
     _js_login = url_for('static', filename='login.js')
 
     _content_seeds = ""
-    _content_pros =""
-    _content_cons = ""
-    _content_neut = ""
 
     db = GrafterDB("GrafterTest")
     seeds = db.getHotSeeds(10)
     for s in seeds:
         _content_seeds += markup_reaction(s)
-    for r_id in seeds[0].reactionIdList:
-        r = db.getReaction(r_id)
-        if r.evaluation == EVAL_PROS:
-            _content_pros += markup_reaction(r)
-        if r.evaluation == EVAL_CONS:
-            _content_cons += markup_reaction(r)
-        if r.evaluation == EVAL_NEUT:
-            _content_neut += markup_reaction(r)
-
     return render_template('hello.html', **locals() )
 
 @application.route("/reaction/<str_id>")
@@ -40,26 +28,27 @@ def detail(str_id=None):
     _css = url_for('static', filename='style.css')
     _js_login = url_for('static', filename='login.js')
     _content_context = ""
-    _content_pros =""
-    _content_cons = ""
-    _content_info = ""
+    _content_react = ""
+    _content_parents = ""
     if not (str_id is None):
         db = GrafterDB("GrafterTest")
-        r = db.getReaction( ObjectId(str_id) )
-        if not (r is None):
-            chain = db.getReactionChain(r)
-            chain.reverse()
-            for pr in chain:
+        temp_r = db.getReaction( ObjectId(str_id) )
+        if not (temp_r is None):
+            chain = db.getReactionChain(temp_r)
+            for pr in reversed(chain):
                 _content_context += markup_reaction(pr)
-            for frid in r.reactionIdList:
-                r = db.getReaction(frid)
-                print "r:", r.strFormat()
-                if r.evaluation == EVAL_PROS:
-                    _content_pros += markup_reaction(r)
-                if r.evaluation == EVAL_CONS:
-                    _content_cons += markup_reaction(r)
-                if r.evaluation == EVAL_NEUT:
-                    _content_info+= markup_reaction(r)
+            if temp_r.isSeed():
+                for frid in temp_r.reactionIdList:
+                    r = db.getReaction(frid)
+                    _content_parents += markup_reaction(r)
+            else:
+                for frid in chain[1].reactionIdList:
+                    if frid != ObjectId(str_id):
+                        r = db.getReaction(frid)
+                        _content_parents += markup_reaction(r)
+                for frid in temp_r.reactionIdList:
+                    r = db.getReaction(frid)
+                    _content_react += markup_reaction(r)
             return render_template('reaction.html', **locals() )
 
 

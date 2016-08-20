@@ -48,7 +48,7 @@ class Reaction:
         return ret
 
     def isSeed(self):
-        if ( self.target is None ) and len(self.comment) != 0:
+        if ( self.target_id is None ) and len(self.comment) != 0:
             return True
         else:
             return False
